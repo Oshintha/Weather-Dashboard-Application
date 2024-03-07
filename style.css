@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e0e0e0;
+   }
+   #search-container {
+    margin-bottom: 20px;
+    align-items: center;
+   }
+   #search-input {
+    padding: 10px;
+    margin-right: 5px;
+   }
+   #search-button {
+    padding: 10px;
+   }
+   #weather-container {
+    text-align: center;
+   }
+   #weather-icon {
+    padding: 10px;
+    aspect-ratio: 1%;
+    width: 10%;
+   }
