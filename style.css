@@ -23,7 +23,5 @@ body {
     text-align: center;
    }
    #weather-icon {
-    padding: 10px;
-    aspect-ratio: 1%;
-    width: 10%;
+    width: 20%;
    }
