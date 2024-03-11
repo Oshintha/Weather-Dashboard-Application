@@ -13,6 +13,9 @@ document.getElementById('search-button').addEventListener('click', async functio
         // Clear input field after fetching
         inputElement.value = '';
     }
+    else
+    // reload the page if click search button without adding a value
+    location.reload();
 })
 
 // Create a function to fetch data from the API
