@@ -36,7 +36,6 @@ async function fetchWeatherResponse (cityName){
         document.getElementById('temperature-feelslike').innerText = '';
         document.getElementById('humidity').innerText = '';
         document.getElementById('wind-speed').innerText = '';
-        
 
         // Display error message
            document.getElementById('city-name').innerText = `City is ${data.name}\n Enter a correct Cityname`;
@@ -45,8 +44,8 @@ async function fetchWeatherResponse (cityName){
         else{
         document.getElementById('city-name').innerText = `Weather in ${data.name},${data.sys.country}`;
         document.getElementById('city-weather').innerText = data.weather[0].main;
-        document.getElementById('temperature').innerText = `Temperature: ${data.main.temp.toFixed(1)} °C (${((data.main.temp * 9/5) + 32).toFixed(1)} °F)`;
-        document.getElementById('temperature-feelslike').innerText = `Feels Like: ${data.main.feels_like.toFixed(1)} °C (${((data.main.feels_like * 9/5) + 32).toFixed(1)} °F)`;
+        document.getElementById('temperature').innerText = `Temperature: ${data.main.temp.toFixed(0)} °C (${((data.main.temp * 9/5) + 32).toFixed(0)} °F)`;
+        document.getElementById('temperature-feelslike').innerText = `Feels Like: ${data.main.feels_like.toFixed(0)} °C (${((data.main.feels_like * 9/5) + 32).toFixed(0)} °F)`;
         document.getElementById('humidity').innerText = `Humidity: ${data.main.humidity}%`;
         document.getElementById('wind-speed').innerText = `Wind Speed: ${data.wind.speed} m/s`;
     }
@@ -55,4 +54,3 @@ async function fetchWeatherResponse (cityName){
         console.log('Error', error);
     }
 }
-console.log(Boolean(10>9));
