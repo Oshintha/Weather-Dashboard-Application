@@ -6,7 +6,7 @@ document.getElementById('search-button').addEventListener('click', async functio
     const inputElement = document.getElementById('search-input')
     const cityName = inputElement.value.trim();
 
-   // If city is having a value
+    // If city is having a value
     if(cityName){
         // Fetch the weather reponse
         fetchWeatherResponse(cityName);
@@ -14,34 +14,6 @@ document.getElementById('search-button').addEventListener('click', async functio
         inputElement.value = '';
     }
 })
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.getElementById('unit-button');
-    toggleButton.addEventListener('click', function() {
-        toggleTemperatureUnits();
-    });
-});
-/*
-let isCelsius = true; // Flag to track current temperature unit
-
-function toggleTemperatureUnits() {
-    isCelsius = !isCelsius; // Toggle the temperature unit flag
-
-    // Update temperature display
-    const temperatureElement = document.getElementById('temperature');
-    const temperature = parseFloat(temperatureElement.dataset.temperature); // Get the temperature value
-    if (isCelsius) {
-        // Convert temperature to Celsius
-        temperatureElement.innerText = `Temperature: ${temperature} °C`;
-    } else {
-        // Convert temperature to Fahrenheit
-        const fahrenheit = (temperature * 9/5) + 32;
-        temperatureElement.innerText = `Temperature: ${fahrenheit.toFixed(2)} °F`;
-    }
-}
-*/
-
 
 // Create a function to fetch data from the API
 async function fetchWeatherResponse (cityName){
@@ -54,15 +26,27 @@ async function fetchWeatherResponse (cityName){
         const data = await response.json();
         console.log(data);
         
-        // If city is incorrect, display error message
+        // If city is incorrect, clear data and display error message
         if (data.cod === '404'){
+
+        // To clear pervious details
+        document.getElementById('city-name').innerText = '';
+        document.getElementById('city-weather').innerText = '';
+        document.getElementById('temperature').innerText = '';
+        document.getElementById('temperature-feelslike').innerText = '';
+        document.getElementById('humidity').innerText = '';
+        document.getElementById('wind-speed').innerText = '';
+        
+
+        // Display error message
            document.getElementById('city-name').innerText = `City is ${data.name}\n Enter a correct Cityname`;
         }
         // If city name is correct, display weather informations
         else{
         document.getElementById('city-name').innerText = `Weather in ${data.name},${data.sys.country}`;
         document.getElementById('city-weather').innerText = data.weather[0].main;
-        document.getElementById('temperature').innerText = `Temperature: ${data.main.temp} °C \n(Feels Like: ${data.main.feels_like} °C)`;
+        document.getElementById('temperature').innerText = `Temperature: ${data.main.temp.toFixed(1)} °C (${((data.main.temp * 9/5) + 32).toFixed(1)} °F)`;
+        document.getElementById('temperature-feelslike').innerText = `Feels Like: ${data.main.feels_like.toFixed(1)} °C (${((data.main.feels_like * 9/5) + 32).toFixed(1)} °F)`;
         document.getElementById('humidity').innerText = `Humidity: ${data.main.humidity}%`;
         document.getElementById('wind-speed').innerText = `Wind Speed: ${data.wind.speed} m/s`;
     }
@@ -71,4 +55,4 @@ async function fetchWeatherResponse (cityName){
         console.log('Error', error);
     }
 }
-
+console.log(Boolean(10>9));
