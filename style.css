@@ -19,9 +19,15 @@ body {
    #search-button {
     padding: 10px;
    }
+   #unit-button {
+    padding: 10px;
+   }
    #weather-container {
     text-align: center;
    }
    #weather-icon {
     width: 20%;
+   }
+   #header {
+    align-items: center;
    }
